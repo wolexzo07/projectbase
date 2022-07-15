@@ -1,0 +1,30 @@
+.msghub{
+	padding-top:20px;
+	padding-bottom:20px;
+	text-align:center;
+	color:green;
+}
+.hubmsg{
+	padding-top:20px;
+	padding-bottom:20px;
+	text-align:center;
+	color:green;
+}
+
+
+.bod{
+background-color:purple;
+background-attachment:fixed;
+}
+.proj1{
+background-color:transparent;
+}
+
+.proj2{
+background-color:white;
+opacity:0.9;
+margin-top:150pt;
+}
+.proj3{
+background-color:transparent;
+}

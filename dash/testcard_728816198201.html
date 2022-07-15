@@ -1,0 +1,32 @@
+<form>
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <button type="button" style="width:300px;padding:15px;" onclick="payWithPaystack()"> Pay </button> 
+</form>
+ 
+<script>
+  function payWithPaystack(){
+    var handler = PaystackPop.setup({
+      key: 'pk_test_0c1df8f5dec4e3e57fe2bd2c69d1b79477485250',
+      email: 'webmastertitus@gmail.com',
+      amount: 10000,
+      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+         custom_fields: [
+            {
+                display_name: "Biobaku Oluwole",
+                variable_name: "xelowgc",
+                value: "+2348169452139"
+            }
+         ]
+      },
+      callback: function(response){
+          alert('success. transaction ref is ' + response.reference);
+	
+      },
+      onClose: function(){
+          alert('window closed');
+      }
+    });
+    handler.openIframe();
+  }
+</script>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
+<![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en">
+<![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=" js no-touch svg inlinesvg svgclippaths no-ie8compat" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width">
+
+	<title>ViewerJS Instructions for installing ViewerJS</title>
+
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="ViewerJS%20Instructions%20for%20installing%20ViewerJS_files/app.css">
+	<link rel="stylesheet" href="ViewerJS%20Instructions%20for%20installing%20ViewerJS_files/local.css">
+	<link rel="stylesheet" href="ViewerJS%20Instructions%20for%20installing%20ViewerJS_files/special.css">
+  
+	<script src="ViewerJS%20Instructions%20for%20installing%20ViewerJS_files/modernizr.js"></script>
+	<script defer="defer" type="text/javascript" src="ViewerJS%20Instructions%20for%20installing%20ViewerJS_files/sie.js"></script>
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script
+src="/javascripts/html5.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+
+<div class="row">
+<div class="twelve columns">
+
+<a href="http://viewerjs.org/"><h1 class="mainhead">ViewerJS</h1></a>
+<h1 class="subhead">Documents. On your site. Now.</h1>
+<hr>
+
+<div style="margin-left, margin-right: auto; width: 100%; display: block;">
+<dl class="tabs pill mobile">
+  <dd><a href="http://viewerjs.org/">Home</a></dd>
+  <dd><a href="http://viewerjs.org/examples/">Examples</a></dd>
+  <dd><a href="http://viewerjs.org/instructions/">Instructions</a></dd>
+  <dd><a href="http://viewerjs.org/instructions/fonts.html">Fonts</a></dd>
+  <dd><a href="http://viewerjs.org/getit/">Get It</a></dd>
+  <dd><a href="http://viewerjs.org/contact/">Contact</a></dd>
+</dl>
+
+</div>
+</div>
+</div>
+
+
+<div class="row">
+<div class="seven columns">
+
+<h3 id="how-to-use-viewerjs">How to use ViewerJS</h3>
+<p>Putting ViewerJS on your website is pretty easy, and shouldn't take more than five minutes.
+ViewerJS is a pretty versatile document viewer that resides on your web server itself. </p>
+<p>Running ViewerJS is as simple as making a link. You can use it to give a full screen
+presentation, but also for showing documents inline in your website or as a
+viewer for links to documents. Because of the way your browser protects itself
+against security risks (which is a very good thing) ViewerJS only works on
+documents that reside on your own server. ViewerJS is complete and 
+self-contained - it does not rely on other services.</p>
+<h2 id="syntax">Syntax</h2>
+<p>For using ViewerJS you don't have to change the page you want to add
+the document to - activating the viewer pretty much works like making
+a regular link. Normally when you create a link to a document on your 
+site you would use:</p>
+<div class="panel">
+<strong>&lt;a href="/path/to/filename.ext"&gt;</strong>
+</div>
+
+<p>For initiating ViewerJS we point the browser to the viewer which (if you followed the instructions)
+resides at <em>/ViewerJS/index.html</em>. We only need to write down <em>/ViewerJS/</em>, the browser will understand the rest.
+The next thing we need to do is tell the browser the location of the actual file we want to show. </p>
+<p>We tell ViewerJS where it can find the document by giving the regular <em>path/to/filename.ext</em> (that is: the absolute path of
+the document counted from the 'root directory' of your webiste) like so:</p>
+<p>In practical terms that means we indicate to the browser to go back to the top folder with #..
+(if you put the directory with ViewerJS elsewhere,  </p>
+<div class="panel">
+<strong>&lt;a href="/ViewerJS/#../path/to/filename.ext"&gt;</strong>
+</div>
+
+<p>(Since we are already using the regular path in the browser for pointing it to the folder with ViewerJS, we
+use a relative link back from that location preceded by the <strong>#</strong> character.) </p>
+<p>That is it. In principle you don't need to change anything to the 'host' page.
+Of course you often want to use ViewerJS for embedding a document inside a
+page. For that we will use a so called iframe - really just a page within a web
+page. Check out the <a href="http://viewerjs.org/examples">examples</a>, and just open the source of the 
+webpage to see how it works.</p>
+<h2 id="quick-start">Quick start</h2>
+<p>Here are the basic steps that are necessary to put ViewerJS on your website.</p>
+<ol>
+<li>Everything starts with <a href="http://viewerjs.org/releases/ViewerJS-latest.zip">downloading ViewerJS</a> from 
+the website.</li>
+<li>Unpack the file on your computer. This will give you a folder called
+'ViewerJS'. Upload that folder to your webserver, preferably to the top
+folder. Now you are ready to see ViewerJS in action.</li>
+<li>Upload a document to your webserver (for the demo we'll use a PDF, if you
+don't have one <a href="http://viewerjs.org/demodoc.pdf">use this</a>. If you already have documents on
+there, you can skip this step.</li>
+<li>See if the document is where you think it is, by inserting the address in
+the address bar of your browser. If your browser offers to download the
+document, you are set. If not, check if you have the correct location of the
+file.</li>
+<li>Create the link to the document as you normally would do (that link can be
+anywhere, as long as both ViewerJS and the document you want to link to are
+on the same website). Now comes the tricky part: we have to use the syntax
+described above to point to the document.</li>
+</ol>
+<div class="panel">
+<strong>&lt;a href="/ViewerJS/#../path/to/filename.ext"&gt;</strong>
+</div>
+
+<p>(If you want, you can always try to see if ViewerJS is installed 
+correctly by going to the address bar of the browser, and inserting <strong>/ViewerJS/#..</strong> inbetween the domain name part of your website (below it is example.org) and the rest of the path:</p>
+<div class="panel">
+<strong>&lt;a href="<em>http://</em>example.org/ViewerJS/#../path/to/filename.ext"&gt;</strong>
+</div>
+
+<p>If that works, you can just copy that URI as well.</p>
+<h2 id="embedding-in-a-page">Embedding in a page</h2>
+<p>To embed a document in the same way as you see here:</p>
+<iframe src="ViewerJS%20Instructions%20for%20installing%20ViewerJS_files/a.html" allowfullscreen="" webkitallowfullscreen="" width="600" height="450"></iframe>
+
+<p>we need to draw an iframe and then pass the same link as we had before to it.
+So if we have a document in folder <strong>/demo/ohm2013.odp</strong> it will look something like this:</p>
+<div class="panel">
+&lt;iframe src = "/ViewerJS/#../demo/ohm2013.odp"
+width='<strong>400</strong>' height='<strong>300</strong>' allowfullscreen webkitallowfullscreen&gt;&lt;/iframe&gt;
+</div>
+
+<p>Note that you need to set the width and the height of the iframe in your page.
+ViewerJS will try to use all the space you give it, but if you want to make
+optimal use of your screen estate make sure that you fit the window of ViewerJS 
+to the dimensions of the document you want to show. If you don't know what to do,
+just try it out with some different formats.</p>
+<p>Common formats:</p>
+<p><strong>(A4 sized documents - portrait)</strong> (1.414 : 1)</p>
+<ul>
+<li>width='724' height='1024' </li>
+<li>width='566' height='800' </li>
+<li>width='389' height='550' </li>
+<li>width='297' height='210'</li>
+</ul>
+<p><strong>(A4 sized documents - landscape)</strong> (1 : 1.414 )</p>
+<ul>
+<li>width='1024' height='724' </li>
+<li>width='800' height='566' </li>
+<li>width='550' height='389' </li>
+<li>width='210' height='297'</li>
+</ul>
+<p><strong>(screen sized documents)</strong> (4 : 3)</p>
+<ul>
+<li>width='1024' height='768' </li>
+<li>width='800' height='600' </li>
+<li>width='600' height='450'</li>
+</ul>
+<p>If you want to position the document to the left or right, use <strong>style="float:left;"</strong> or <strong>style="float:right;"</strong>.
+If you want to center the document, use <strong>style="text-align:center;"</strong>:</p>
+<div class="panel">
+&lt;iframe style="float:right;" src = "/ViewerJS/#../demo/ohm2013.odp"
+width='<strong>400</strong>' height='<strong>300</strong>' allowfullscreen webkitallowfullscreen&gt;&lt;/iframe&gt;
+</div>
+
+</div>
+
+<div class="five columns">
+<div class="panel">
+
+<h2>What is ViewerJS?</h2>
+
+<p>ViewerJS is a combination of a number of excellent open source tools 
+that are built on HTML and JavaScript. ViewerJS was funded by NLnet 
+foundation, consider a <a href="http://nlnet.nl/donating">donation</a>.</p>
+
+<img style="display: block; margin-left: auto; margin-right: auto;" src="ViewerJS%20Instructions%20for%20installing%20ViewerJS_files/nlnet.png" alt="NLnet logo">
+
+</div>
+<div class="panel">
+
+<p>The heavy lifting in ViewerJS is done by these awesome projects:</p>
+
+<h2>PDF.js (by Mozilla)</h2>
+<img style="float: right;" src="ViewerJS%20Instructions%20for%20installing%20ViewerJS_files/pdfjs.png" alt="PDF.js logo">
+<p>PDF.js is a library created by Andreas Gal and others at Mozilla 
+Labs. It is an HTML5 technology experiment that explores building a 
+faithful and efficient Portable Document Format (PDF) renderer without 
+native code assistance.
+
+PDF.js is community-driven and supported by <a href="http://labs.mozilla.org/">Mozilla Labs</a>.
+ Its goal is to create a general-purpose, web standards-based platform 
+for parsing and rendering PDFs, and eventually release a PDF reader 
+extension powered by PDF.js.
+<br><a href="http://mozilla.github.io/pdf.js/">Visit project website</a>
+</p>
+
+<h2>WebODF (by KO GmbH)</h2>
+<img style="float: right;" src="ViewerJS%20Instructions%20for%20installing%20ViewerJS_files/webodf.png" alt="WebODF logo">
+<p>WebODF is a JavaScript library that shows office documents created by <a href="http://kogmbh.com/">KO GmbH</a>.
+ It was started by Jos van den Oever at KO and is now developed by a 
+growing team including external collaborators. It makes it easy to add 
+Open Document Format (ODF) support to your website and to your mobile or
+ desktop applications. It uses HTML and CSS to display ODF documents.
+<br><a href="http://webodf.org/">Visit project website</a>
+</p>
+</div>
+
+<div class="panel">
+<h2>Download or fork now</h2>
+<img style="float: left; margin-left: 0px;" src="ViewerJS%20Instructions%20for%20installing%20ViewerJS_files/fork.png" alt="iFork">
+
+<p>Download now (see <a href="http://viewerjs.org/instructions/">instructions</a>), or fork the code at GitHub and send us a pull request.</p>
+
+<p>
+<a href="http://viewerjs.org/releases/ViewerJS-latest.zip" class="icon-thumbs-up-1 small button">Download</a>
+
+<a href="https://github.com/kogmbh/ViewerJS" class="icon-thumbs-up-1 small button">Source code</a>
+</p>
+</div>
+</div>
+</div>
+
+<hr>
+
+
+
+
+
+<div class="row">
+  <div class="twelve columns">
+
+    <a href="http://viewerjs.org/">ViewerJS</a> is brought to you by <a href="http://kogmbh.com/">KO GmbH</a> | 
+    <a href="http://kogmbh.com/legal/">Impressum</a> 
+  </div>
+</div>
+
+
+</body></html>
