@@ -39,6 +39,10 @@ if(x_count("siteinfom","id='1'") > 0){
 		$instagram = $site["instagram"];
 		$behance = $site["behance"];
 		
+		$captcha = $site["g-recaptcha"];
+		$gsecret = $site["g-secret"];
+		
+		
 	}
 }else{
 		$siteid = "";
@@ -75,6 +79,9 @@ if(x_count("siteinfom","id='1'") > 0){
 		$youtube = "";
 		$instagram = "";
 		$behance = "";
+		
+		$captcha = "";
+		$gsecret = "";
 		
 		finish("0","Database Server Misconfiguration ! Your application will not function properly. Kindly contact the software developer");
 }

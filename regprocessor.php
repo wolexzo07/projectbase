@@ -1,5 +1,6 @@
 <?php
 include_once("xe-library/xe-library74.php");
+include_once("siteinfo.php");
 xstart("0");
 if(x_validatepost("_token") && x_validatesession("XCAPE_HACKS")){
 
@@ -11,7 +12,7 @@ if(x_validatepost("_token") && x_validatesession("XCAPE_HACKS")){
 	}
 	// Controlled google captcha
 	if(x_count("control_captcha","status='1'") > 0){
-		$secret = "6LcDo1sUAAAAAOF0Nwyg-jvChfPqH_w7s7YVNnn0";
+		$secret = "$gsecret";
 		$gpost = xp("g-recaptcha-response");
 		$params = array(
 				   "secret" => $secret,

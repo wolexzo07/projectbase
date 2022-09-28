@@ -58,7 +58,7 @@ if(isset($pageToken)){
 				if(x_count("control_captcha","status='1'") > 0){
 					?>
 				<div class="re-captcha">
-					<div class="g-recaptcha" data-sitekey="6LcDo1sUAAAAAEPlrWpeHZlvDbV1ydwDuM0lJe9N"></div>
+					<div class="g-recaptcha" data-sitekey="<?php echo $captcha;?>"></div>
 			    </div>
 					<?php
 				}
