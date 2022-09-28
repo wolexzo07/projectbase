@@ -1,10 +1,12 @@
 <?php
   include_once("../finishit.php");
+  include_once("../siteinfo.php");
  // include("qrlib.php");
   xstart("0");
   xreq("validation.php");
   xreq("headtop.php");
-  xtitle("Projectbase.ng - DashBoard");
+  $user = $_SESSION["PBNG_NAME_2018_VISION"];
+  xtitle("$sitename - DashBoard :: Welcome $user");
   xreq("headbt.php");
   ?>
         <div class="wrapper">

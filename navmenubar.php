@@ -9,7 +9,7 @@ if(isset($pageToken)){
             <div class="navbar-brand">
                 <span class="navbar-logo">
                     
-                        <img src="assets/images/prolg-96x91.png" alt="logo" style="height: 3rem;">
+                        <img src="<?php echo $sitelogo;?>" alt="logo" style="height: 3rem;">
                     
                 </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7" href="#"><?php echo strtoupper($sitename);?></a></span>
@@ -52,7 +52,7 @@ if(isset($pageToken)){
 				
 				</ul>
                 
-                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-4" href="#"><i class="fa fa-sign-in"></i>&nbsp; Sign in</a></div>
+                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-4" href="login"><i class="fa fa-sign-in"></i>&nbsp; Sign in</a></div>
             </div>
         </div>
     </nav>

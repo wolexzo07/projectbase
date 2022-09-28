@@ -16,16 +16,18 @@ $pageToken = sha1(uniqid());
 
 <?php include("navmenubar.php");?>
   
-<section data-bs-version="5.1" class="header4 cid-t7B9APbWbB mbr-fullscreen mbr-parallax-background" id="header4-1">
+<section data-bs-version="5.1" style="padding-top:0pt;" class="header4 cid-t7B9APbWbB mbr-fullscreen mbr-parallax-background" id="header4-1">
 
     
     <div class="mbr-overlay"></div>
     <div class="container">
-        <div class="row">
+        <div class="row" >
             <div class="content-wrap">
                 <?php echo $front_header;?>
                 
                 <?php echo $front_des;?>
+			
+                <div class="mbr-section-btn"><a class="btn btn-primary display-4" href="login"><i class="fa fa-users"></i>&nbsp;Create an Account</a></div>
 
             </div>
         </div>
@@ -36,108 +38,152 @@ $pageToken = sha1(uniqid());
 
 <section data-bs-version="5.1" class="features12 cid-t7CXw08jXd" id="features13-h">
 
-    
-    
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-6">
                 <div class="card-wrapper">
                     <div class="card-box align-left">
-                        <h4 class="card-title mbr-fonts-style mb-4 display-2">
-                            <strong>Why choose us?</strong>
+						<?php
+							$phase = 3;
+							if(x_count("manage_front_phase","status='1' AND phases='$phase' AND is_header_content='1' LIMIT 1") > 0){
+								foreach(x_select("0","manage_front_phase","status='1' AND phases='$phase' AND is_header_content='1'","1","id") as $whychooseus){
+									$id = $whychooseus["id"];
+									$phd = $whychooseus["phase_description"];
+									$icon = $whychooseus["icon"];
+									$title = $whychooseus["title"];
+									$cn = $whychooseus["content"];
+									$cnlink = $whychooseus["content_link"];
+									$cnimg = $whychooseus["content_image"];
+									$stat = $whychooseus["status"];
+								}
+								?>
+						<h4 class="card-title mbr-fonts-style mb-4 display-2">
+                            <strong><?php echo $title;?></strong>
                         </h4>
                         <p class="mbr-text mbr-fonts-style mb-4 display-7">
-                            Use Mobirise website building software to create multiple sites for commercial and non-profit projects.</p>
-                        <div class="mbr-section-btn"><a class="btn btn-primary display-4" href="#">Learn More</a></div>
+                            <?php echo $cn;?></p>
+                        <div class="mbr-section-btn"><a class="btn btn-primary display-4" href="<?php echo $cnlink;?>">Learn More</a></div>
+								<?php
+							}else{
+								?>
+								<h4 class="card-title mbr-fonts-style mb-4 display-2">
+									<strong>Oops: Missing content!!</strong>
+								</h4>
+								<?php
+							}
+						?>
+ 
+                       
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-6">
-                <div class="item mbr-flex">
+			<?php
+				if(x_count("manage_front_phase","status='1' AND phases='$phase' AND is_header_content='0' LIMIT 1") > 0){
+					foreach(x_select("0","manage_front_phase","status='1' AND phases='$phase' AND is_header_content='0'","0","id") as $whychooseus){
+						$id = $whychooseus["id"];
+						$phd = $whychooseus["phase_description"];
+						$icon = $whychooseus["icon"];
+						$title = $whychooseus["title"];
+						$cn = $whychooseus["content"];
+						$cnlink = $whychooseus["content_link"];
+						$cnimg = $whychooseus["content_image"];
+						$stat = $whychooseus["status"];
+						
+						?>
+				<div class="item mbr-flex">
                     <div class="icon-box">
-                        <span class="mbr-iconfont mobi-mbri-globe-2 mobi-mbri"></span>
+                        <span class="<?php echo $icon;?>"></span>
                     </div>
                     <div class="text-box">
                         <h4 class="icon-title mbr-black mbr-fonts-style display-7">
-                            <strong>24/7 Support Guaranteed</strong>
+                            <strong><?php echo $title;?></strong>
                         </h4>
-                        <h5 class="icon-text mbr-black mbr-fonts-style display-4">Our customers are the major priority and we provide a good support incase of any dispute. </h5>
+                        <h5 class="icon-text mbr-black mbr-fonts-style display-4"><?php echo $cn;?></h5>
                     </div>
                 </div>
-                <div class="item mbr-flex">
-                    <div class="icon-box">
-                        <span class="mbr-iconfont mobi-mbri-update mobi-mbri"></span>
-                    </div>
-                    <div class="text-box">
-                        <h4 class="icon-title mbr-black mbr-fonts-style display-7">
-                            <strong>Fast & Safe Transaction</strong>
-                        </h4>
-                        <h5 class="icon-text mbr-black mbr-fonts-style display-4">We protect our customers from scammers because we ensure that all professionals are fully verified. </h5>
-                    </div>
-                </div>
-                <div class="item mbr-flex">
-                    <div class="icon-box">
-                        <span class="mbr-iconfont mobi-mbri-user-2 mobi-mbri"></span>
-                    </div>
-                    <div class="text-box">
-                        <h4 class="icon-title mbr-black mbr-fonts-style display-7">
-                            <strong>Unique Styles</strong>
-                        </h4>
-                        <h5 class="icon-text mbr-black mbr-fonts-style display-4">Select the theme that suits you. Each theme in the Mobirise site builder contains a set of unique blocks.</h5>
-                    </div>
-                </div>
+					<?php
+					}
+								
+							}else{
+								?>
+								<h4 class="card-title mbr-fonts-style mb-4 display-2">
+									<strong>Oops: Missing content!!</strong>
+								</h4>
+								<?php
+							}
+						?>
+                
+				<!--------Ended listing--------->
             </div>
         </div>
     </div>
 </section>
 
-<section data-bs-version="5.1" class="features11 cid-t7D2lOq4ML" id="features12-i">
 
-    
-    
+<?php
+	$phase = 4;
+	if(x_count("manage_front_phase","status='1' AND phases='$phase' LIMIT 1") > 0){
+		$scounter = 0;
+		foreach(x_select("0","manage_front_phase","status='1' AND phases='$phase'","3","id") as $services){
+				$scounter++;
+				$id = $services["id"];
+				$phd = $services["phase_description"];
+				$icon = $services["icon"];
+				$title = $services["title"];
+				$cn = $services["content"];
+				$cnlink = $services["content_link"];
+				$cnimg = $services["content_image"];
+				$stat = $services["status"];
+			
+				if($scounter == 1){
+					?>
+<section data-bs-version="5.1" class="features11 cid-t7D2lOq4ML" id="features12-i">
     <div>
         <div class="m-0 row align-items-center">
             <div class="col-12 col-lg offset-lg-1">
                 <div class="card-wrapper">
                     <div class="card-box">
                         <h4 class="card-title mbr-fonts-style mb-4 display-2">
-                            <strong>Get Connected</strong></h4>
+                            <strong><?php echo $title;?></strong></h4>
                         <p class="mbr-text mbr-fonts-style mb-4 display-7">
-                            Projectbase connects <strong>students</strong> to professionals that can handle your <strong>final year projects</strong> , <strong>Theses</strong> and <strong>dissertations</strong>. Get a professional project writer by posting your project Topic and get bids from various professionals.</p>
+							<?php echo $cn;?>
+						</p>
                         
-                        <div class="mbr-section-btn mb-4"><a class="btn btn-primary display-4" href="https://mobiri.se">Get Started</a></div>
+                        <div class="mbr-section-btn mb-4"><a class="btn btn-primary display-4" href="<?php echo $cnlink;?>">Get Started</a></div>
                     </div>
                 </div>
             </div>
             <div class="p-3 col-12 col-lg-5 md-pb">
                 <div class="image-wrapper">
-                    <img src="assets/images/features-2-1053x585.png" alt="">
+                    <img src="<?php echo $cnimg;?>" alt="">
                 </div>
             </div>
         </div>
     </div>
 </section>
-
+					<?php
+				}
+				elseif($scounter == 2){
+					?>
 <section data-bs-version="5.1" class="features11 cid-t7DmoB8ar3" id="features12-l">
-
-    
-    
     <div>
         <div class="m-0 row align-items-center">
 		  <div class="p-3 col-12 col-lg-5 md-pb">
                 <div class="image-wrapper">
-                    <img src="assets/images/features-1-875x592.png" alt="">
+                    <img src="<?php echo $cnimg;?>" alt="">
                 </div>
             </div>
             <div class="col-12 col-lg offset-lg-1">
                 <div class="card-wrapper">
                     <div class="card-box">
                         <h4 class="card-title mbr-fonts-style mb-4 display-2">
-                            <strong>Get Hired</strong></h4>
+                            <strong><?php echo $title;?></strong></h4>
                         <p class="mbr-text mbr-fonts-style mb-4 display-7">
-                            Get <strong>hired</strong> as a professional to handle <strong>final year projects</strong> , <strong>Theses</strong> and <strong>dissertations</strong> for different students accross Africa. Join the league of projectbase professionals and start earning steadily.</p>
+						<?php echo $cn;?>
+                        </p>
                         
-                        <div class="mbr-section-btn mb-4"><a class="btn btn-primary display-4" href="https://mobiri.se">Get Hired</a></div>
+                        <div class="mbr-section-btn mb-4"><a class="btn btn-primary display-4" href="<?php echo $cnlink;?>">Get Hired</a></div>
                     </div>
                 </div>
             </div>
@@ -145,57 +191,91 @@ $pageToken = sha1(uniqid());
         </div>
     </div>
 </section>
-
+					<?php
+				}
+				else{
+					?>
 <section data-bs-version="5.1" class="features11 cid-t7Duf0yQam" id="features12-m">
-
-    
-    
     <div>
         <div class="m-0 row align-items-center">
             <div class="col-12 col-lg offset-lg-1">
                 <div class="card-wrapper">
                     <div class="card-box">
                         <h4 class="card-title mbr-fonts-style mb-4 display-2">
-                            <strong>Buy and Sell</strong></h4>
-                        <p class="mbr-text mbr-fonts-style mb-4 display-7">No more wasting of used project materials because at projectbase you can upload your used project materials and make money from it and also you can buy completed project materials at affordable price.</p>
+                            <strong><?php echo $title;?></strong></h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7"><?php echo $cn;?></p>
                         
-                        <div class="mbr-section-btn mb-4"><a class="btn btn-primary display-4" href="https://mobiri.se">Get Started</a></div>
+                        <div class="mbr-section-btn mb-4"><a class="btn btn-primary display-4" href="<?php echo $cnlink;?>">Get Started</a></div>
                     </div>
                 </div>
             </div>
             <div class="p-3 col-12 col-lg-5 md-pb">
                 <div class="image-wrapper">
-                    <img src="assets/images/features-3-925x617.png" alt="">
+                    <img src="<?php echo $cnimg;?>" alt="">
                 </div>
             </div>
         </div>
     </div>
 </section>
-
+					<?php
+				}
+			
+			}
+						
+	}else{
+		?>
+		<h4 class="card-title mbr-fonts-style mb-4 display-2 text-center p-5">
+			<strong>Oops: Missing content!!</strong>
+		</h4>
+		<?php
+	}
+?>
 
 
 <section data-bs-version="5.1" class="image2 cid-t7DDq0Dvy0" id="image2-n">
-    
-
-    
 
     <div class="container">
-        <div class="row align-items-center">
+       <?php
+$phase = 5;
+if(x_count("manage_front_phase","status='1' AND phases='$phase' LIMIT 1") > 0){
+	foreach(x_select("0","manage_front_phase","status='1' AND phases='$phase'","0","id") as $cert){
+		$id = $cert["id"];
+		$phd = $cert["phase_description"];
+		$icon = $cert["icon"];
+		$title = $cert["title"];
+		$cn = $cert["content"];
+		$cnlink = $cert["content_link"];
+		$cnimg = $cert["content_image"];
+		$stat = $cert["status"];
+		
+		?>
+		<div class="row align-items-center">
             <div class="col-12 col-lg">
                 <div class="text-wrapper">
                     <h3 class="mbr-section-title mbr-fonts-style mb-3 display-2">
-                        <strong>Trade with us and Enjoy Respite</strong></h3>
+                        <strong><?php echo $title;?></strong></h3>
                     <p class="mbr-text mbr-fonts-style display-7">
-                        Projectbase is duly registered under the parent company called <strong>XELOW GLOBAL CONCEPT </strong>with registration Number<strong> 1836619 with Corporate Affairs Commission (CAC)</strong></p>
+                        <?php echo $cn;?></p>
                 </div>
             </div>
 			<div class="col-12 col-lg-5">
                 <div class="image-wrapper">
-                    <img src="assets/images/company-534x656.png" alt="cac certificate">
+                    <img src="<?php echo $cnimg;?>" alt="cac certificate">
                     
                 </div>
             </div>
         </div>
+		<?php
+	}
+				
+			}else{
+				?>
+				<h4 class="card-title mbr-fonts-style mb-4 display-2 text-center p-4">
+					<strong>Oops: Missing content!!</strong>
+				</h4>
+				<?php
+			}
+		?>
     </div>
 </section>
 
@@ -221,19 +301,19 @@ $pageToken = sha1(uniqid());
                 
             </div>
             <div class="icons d-flex align-items-center col-12 col-md-6 justify-content-end mt-md-0 mt-2 flex-wrap">
-                <a href="https://twitter.com/projectbase2018" target="_blank">
+                <a href="<?php echo $twitter;?>" target="_blank">
                     <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
                 </a>
-                <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+                <a href="<?php echo $facebook;?>" target="_blank">
                     <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
                 </a>
-                <a href="https://www.youtube.com/c/mobirise" target="_blank">
+                <a href="<?php echo $youtube;?>" target="_blank">
                     <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
                 </a>
-                <a href="https://instagram.com/mobirise" target="_blank">
+                <a href="<?php echo $instagram;?>" target="_blank">
                     <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
                 </a>
-                <a href="#" target="_blank">
+                <a href="<?php echo $behance;?>" target="_blank">
                     <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
                 </a>
                 

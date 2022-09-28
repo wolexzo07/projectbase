@@ -5,7 +5,7 @@
   <meta name="twitter:title" content=""/>
   <meta name="description" content=""/>
   <meta name="keywords" content=""/>
-  <link rel="shortcut icon" href="assets/images/prolg-96x91.png" type="image/x-icon"/>
+  <link rel="shortcut icon" href="<?php echo $favico;?>" type="image/x-icon"/>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css"/>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css"/>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>

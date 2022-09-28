@@ -32,8 +32,16 @@ if(x_count("siteinfom","id='1'") > 0){
 		$site_front_image3 = $site["site_front_image3"];
 		$site_front_bg = $site["site_front_bg"];
 		
+		
+		$twitter = $site["twitter"];
+		$facebook = $site["facebook"];
+		$youtube = $site["youtube"];
+		$instagram = $site["instagram"];
+		$behance = $site["behance"];
+		
 	}
 }else{
+		$siteid = "";
 		$siteaddress = "";
 		$sitename = "";
 		$sitetitle = "";
@@ -58,7 +66,15 @@ if(x_count("siteinfom","id='1'") > 0){
 		$footer_note = "";
 		
 		$site_front_image = "";
+		$site_front_image2 = "";
+		$site_front_image3 = "";
 		$site_front_bg = "";
+		
+		$twitter = "";
+		$facebook = "";
+		$youtube = "";
+		$instagram = "";
+		$behance = "";
 		
 		finish("0","Database Server Misconfiguration ! Your application will not function properly. Kindly contact the software developer");
 }
