@@ -27,7 +27,7 @@ $pageToken = sha1(uniqid());
                 
                 <?php echo $front_des;?>
 			
-                <div class="mbr-section-btn"><a class="btn btn-primary display-4" href="login"><i class="fa fa-users"></i>&nbsp;Create an Account</a></div>
+                <div class="mbr-section-btn"><a class="btn btn-primary display-4" href="login?action=register"><i class="fa fa-users"></i>&nbsp;Create an Account</a></div>
 
             </div>
         </div>

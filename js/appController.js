@@ -1,5 +1,27 @@
 $(document).ready(function(e){
 	
+	$("#uploadFormnow").on('submit',(function(e) {
+	$("#sign-up-Result").show("slow");
+	$("#sign-up-Result").fadeIn(400).html('<center><img src="image/ajax-loader.gif" /></center>');
+	e.preventDefault();
+	$.ajax({
+        	url: "regprocessor",
+			type: "POST",
+			data:  new FormData(this),
+			contentType: false,
+    	    cache: false,
+			processData:false,
+			success: function(data){
+			$("#sign-up-Result").fadeIn(400).html(data);
+			$(".input-0").val("");
+				setTimeout(function(){
+					$("#sign-up-Result").hide(2000);
+				},3000);
+		    },
+		  	error: function(){}
+	   });
+	}));
+	
 	$("#uploadForm").on('submit',(function(e) {
 	$("#sign-in-Result").show("slow");
 	$("#sign-in-Result").fadeIn(400).html('<center><img src="image/ajax-loader.gif" /></center>');
@@ -13,26 +35,12 @@ $(document).ready(function(e){
 			processData:false,
 			success: function(data){
 			$("#sign-in-Result").fadeIn(400).html(data);
+			$(".input-1").val("");
+				setTimeout(function(){
+					$("#sign-in-Result").hide(2000);
+				},3000);
 		    },
 		  	error: function(){} 	        
-	   });
-	}));
-	
-	$("#uploadFormnow").on('submit',(function(e) {
-	$("#gallery").show("slow");
-	$("#gallery").fadeIn(400).html('<center><img src="image/ajax-loader.gif" /></center>');
-	e.preventDefault();
-	$.ajax({
-        	url: "regprocessor",
-			type: "POST",
-			data:  new FormData(this),
-			contentType: false,
-    	    cache: false,
-			processData:false,
-			success: function(data){
-			$("#gallery").fadeIn(400).html(data);
-		    },
-		  	error: function(){}
 	   });
 	}));
 	

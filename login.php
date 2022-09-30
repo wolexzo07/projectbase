@@ -25,7 +25,14 @@ $toks = sha1($_SESSION["AUTH_PAGE_PROJECTBASE"].sha1(Date("Y-m-d")));
 $extra = "?auth_toks=$toks&user_agent=$uag&identify_client=$host";
 
 if(!x_validateget("auth_toks") || !x_validateget("user_agent") || !x_validateget("identify_client")){
-	finish("login$extra","0");
+	if(x_validateget("action")){
+		$action = x_get("action");
+		$extra = "?action=$action&auth_toks=$toks&user_agent=$uag&identify_client=$host";
+		finish("login$extra","0");
+	}else{
+		finish("login$extra","0");
+	}
+	
 }
 //generating session to prevent cross request forgery attack
 $pageToken = sha1(uniqid()).md5(rand());
@@ -36,10 +43,7 @@ $_SESSION["XCAPE_HACKS"] = $pageToken;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="login-assets/mod.css" />
     <link rel="shortcut icon" href="<?php echo $favico;?>" type="image/x-icon"/>
 	<title><?php echo $sitename." | "."Member Sign in & Sign up section";?> </title>
@@ -108,5 +112,19 @@ $_SESSION["XCAPE_HACKS"] = $pageToken;
       </div>
     </div>
 	<script src="login-assets/app.js"></script>
+	<?php
+	if(x_validateget("action")){
+		if(x_get("action") == "register"){
+		?>
+		<script>
+		$(document).ready(function(){
+			$("#sign-up-btn").click();
+		});
+			
+		</script>
+		<?php	
+		}
+	}
+ ?>
   </body>
 </html>

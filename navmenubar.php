@@ -52,7 +52,7 @@ if(isset($pageToken)){
 				
 				</ul>
                 
-                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-4" href="login"><i class="fa fa-sign-in"></i>&nbsp; Sign in</a></div>
+                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-4" href="login?action=logon"><i class="fa fa-sign-in"></i>&nbsp; Sign in</a></div>
             </div>
         </div>
     </nav>

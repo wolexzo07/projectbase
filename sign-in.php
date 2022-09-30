@@ -7,11 +7,11 @@ if(isset($pageToken)){
             <h2 class="title"><img src="<?php echo $sitelogo;?>" style="width:40px;"/>&nbsp;&nbsp;Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" name="email" placeholder="Username" />
+              <input type="text" name="email" class="" placeholder="Username" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" name="pass"/>
+              <input type="password" placeholder="Password" class="input-1" name="pass"/>
             </div>
 			<input type="hidden" name="_token" value="<?php echo sha1(rand().uniqid())?>"/>
 			

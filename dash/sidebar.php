@@ -76,11 +76,5 @@ require_once("fpine/adminbase.php");
 }
 ?>
 
-              <!--  <ul class="list-unstyled CTAs">
-                    <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">
-						<i class="glyphicon glyphicon-cloud-download"></i>
-						Download Tutorial</a></li>
-                    <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">
-						<i class="glyphicon glyphicon-download"></i> Download Policy</a></li>
-                </ul>--->
+            
             </nav>

@@ -31,15 +31,16 @@ if(x_validatepost("_token") && x_validatesession("XCAPE_HACKS")){
  $salt = "ABCDEFGHIJKKLMNOPQ1234567890abcghdtuwioalkjsnh?@";
  $pass = xp("pass");$hash = md5(sha1($pass).$salt).sha1(sha1($pass).$salt);
 
- $ref = xpp("ref");
+ $ref = x_clean(x_post("ref"));
 
- $checkterms = xp("checkterms");
-
-		  
-		  if($checkterms != "Yes"){
-			  echo "<p class='hubmsg'>Sorry! You must accept our terms of use</p>";
-			  exit();
-			  }
+ $checkterms = "yes";
+ 
+ /***formal implementation
+ $checkterms = xp("checkterms");		  
+ if($checkterms != "Yes"){
+	  echo "<p class='hubmsg'>Sorry! You must accept our terms of use</p>";
+	  exit();
+ }****/
 
  
  $sa = "IhAvEtHEAbIlItYOfThSpiRiT156725637892?@";
@@ -47,10 +48,10 @@ if(x_validatepost("_token") && x_validatesession("XCAPE_HACKS")){
  
  $time = x_curtime("0","0");$rtime = x_curtime("0","1");
  
- $tok = "pbng_".sha1(uniqid().xrands(10).$email.Date("His"));
+ $tok = "pbs-".sha1(uniqid().xrands(10).$email.Date("His"));
  $token = sha1($email.uniqid().xrands(10).Date("His"))."_";
  	 
-$create = x_create("userdb","
+$create = x_dbtab("userdb","
 	verify ENUM('no','yes') NOT NULL,
 	id_type ENUM('intl. passport','Drivers License','Voters Card','National ID Card') NOT NULL,
 	wallet_balance DOUBLE NOT NULL,
@@ -91,24 +92,26 @@ $create = x_create("userdb","
 	ip VARCHAR(30) NOT NULL,
 	last_login DATETIME NOT NULL,
 	last_login_r VARCHAR(220) NOT NULL
-			");
-			$os = xos();$br = xbr();$ip = xip();
-if($create){
-if(x_count("userdb","email='$email' LIMIT 1") > 0){
-echo "<p class='hubmsg'>Email <b>$email</b> already used!</p>";
-}else{
+	","innodb");
+			
+	$os = xos();$br = xbr();$ip = xip();
+	
+	if($create){
+	if(x_count("userdb","email='$email' LIMIT 1") > 0){
+	echo "<p class='hubmsg'>Email <b>$email</b> already used!</p>";
+	}else{
 
-if(x_count("signup_activation","status='1' LIMIT 1") > 0){
-include_once("usermail.php");
-x_insert("pin,status,name,email,pass,token,timest,realtime,os,br,ip,position,ref","userdb","'$pin','inactive','$fullname','$email','$hash','$tok','$time','$rtime','$os','$br','$ip','$pos','$ref'","<script>window.location='finalize_it';</script>","Failed to submit data.");
-}else{
+	if(x_count("signup_activation","status='1' LIMIT 1") > 0){
+	include_once("usermail.php");
+	x_insert("pin,status,name,email,pass,token,timest,realtime,os,br,ip,position,ref","userdb","'$pin','inactive','$fullname','$email','$hash','$tok','$time','$rtime','$os','$br','$ip','$pos','$ref'","<script>window.location='finalize_it';</script>","Failed to submit data.");
+	}else{
 
-x_insert("pin,status,name,email,pass,token,timest,realtime,os,br,ip,position,ref","userdb","'$pin','active','$fullname','$email','$hash','$tok','$time','$rtime','$os','$br','$ip','$pos','$ref'","<script>window.location='finalize_it';</script>","Failed to submit data.");
+	x_insert("pin,status,name,email,pass,token,timest,realtime,os,br,ip,position,ref","userdb","'$pin','active','$fullname','$email','$hash','$tok','$time','$rtime','$os','$br','$ip','$pos','$ref'","<script>window.location='finalize_it';</script>","Failed to submit data.");
 
-}
+	}
 
 
-}
+	}
 	}else{
 		echo "<p class='hubmsg'>Failed to create table!</p>";
 	}
